@@ -18,10 +18,12 @@ public class ExperimentService {
 		new RestTemplate().postForEntity(repoUrl, result, SpeedResult.class);
 	}
 	
-	public void conversion(String name, String to) {
+	public SpeedResult conversion(String name, String to) {
 		SpeedResult result = new RestTemplate().getForEntity(repoUrl + "/name", SpeedResult.class).getBody();
 		String from = result.getSpeed().getDistance().getDistanceUnit().toString();
 		//send request to conversion api
+		
+		return new RestTemplate().getForEntity(String.format(conversionUrl, from, to, result.getSpeed().getDistance().getUnit()), SpeedResult.class).getBody();
 	}
 	
 }
