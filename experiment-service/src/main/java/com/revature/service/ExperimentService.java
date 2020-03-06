@@ -1,19 +1,21 @@
 package com.revature.service;
 
-import java.util.List;
-
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import com.revature.model.SpeedResult;
 
 @Service
 public class ExperimentService {
 	
-	ExperimentRepo experimentRepo;
 	
-	public List<SpeedResult> findAll(){
-		return experimentRepo.findAll();
-	}
 	
 	public void createExperiment(SpeedResult result) {
-		return experimentRepo.save(result);
+		
 	}
+	
+	public void convertExperiment(SpeedResult result) {
+		//need to access distanceunit-repository
+	}
+	
 }

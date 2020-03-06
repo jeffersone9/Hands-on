@@ -8,5 +8,4 @@ import com.revature.model.SpeedResult;
 @Repository
 public interface ExperimentRepo extends JpaRepository<SpeedResult, Long>{
 
-	public SpeedResult findById();
 }

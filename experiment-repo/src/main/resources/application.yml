@@ -1,0 +1,21 @@
+spring:
+  profile: postgresql
+  datasource:
+    initializantion-mode: always
+    platform: postgres
+    url: jdbc:postgresql://localhost:5432/resultsDB
+    driverClassName: org.postgresql.Driver
+    username: postgres
+    password: Ej695950
+  jpa:
+    database: POSTGRESQL
+    hibernate:
+      ddl-auto: update
+
+server:
+  port: 8002
+
+management:
+  endpoint:
+    health:
+      show-details: always
