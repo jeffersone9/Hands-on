@@ -1,8 +1,6 @@
 package com.revature.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -17,17 +15,17 @@ import com.revature.service.ExperimentService;
 @RequestMapping("api/experiment")
 public class ExperimentController {
 
+	@Autowired
+	ExperimentService es;
 	
-//	@PostMapping("/")
-//	public ResponseEntity<SpeedResult> createExperiment(@RequestBody SpeedResult result){
-//		//result = experimentService.createExperiment(result);
-//		
-//		
-//	}
-//	
-//	@GetMapping("?subjectName={name}&converTo=@Param{unit}")
-//	public ResponseEntity<SpeedResult> convertUnit(@RequestBody SpeedResult result,
-//			@PathVariable String name, @PathVariable String unit){
-//		
-//	}
+	@PostMapping("/")
+	public void createExperiment(@RequestBody SpeedResult result){
+		es.save(result);
+		
+	}
+	
+	@GetMapping("?subjectName={name}&converTo=@Param{to}")
+	public void convertUnit(@PathVariable String name, @PathVariable String to){
+		es.conversion(name, to);
+	}
 }
